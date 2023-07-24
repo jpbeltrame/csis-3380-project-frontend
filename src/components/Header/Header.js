@@ -1,87 +1,110 @@
-import './Header.css';
-import React, { useState } from 'react';
-import { Avatar ,Button,Menu, Layout} from 'antd';
-import { Typography } from 'antd';
-import { UserOutlined} from '@ant-design/icons';
+import "./Header.css";
+import React, { useState } from "react";
+import {
+  Avatar,
+  Menu,
+  Dropdown,
+  Input,
+} from "antd";
+import { Typography } from "antd";
+import { UserOutlined } from "@ant-design/icons";
 
-function getItem(label, key, icon, children, type) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-    type,
-  };
-}
+const { Search } = Input;
+const onSearch = (value) => console.log(value);
 
-
-const items = [
-  getItem('User Name', 'sub1', <Avatar />, [
-    getItem('Item 1', 'g1', null, [getItem('Option 1', '1'), getItem('Option 2', '2')], 'group'),
-    getItem('Item 2', 'g2', null, [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
-  ])];
 
 
 function Header() {
   const routes = [
     {
-      name: 'Home',
-      path: '/',
+      name: "Home",
+      path: "/",
     },
     {
-      name: 'About',
-      path: '/about',
+      name: "About",
+      path: "/about",
+    },
+    {
+      name: "User Profile",
+      path: "/user",
+    },
+    {
+      name: "Wish Lists",
+      path: "/wishList",
+    },
+    {
+      name: "Sign out",
+      path: "/",
     },
   ];
 
-  const menuItens = routes.map((r) => <li><a href={r.path}>{r.name}</a></li>);
-  const { Title } = Typography;
-  const url = 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg';
- 
-  const [collapsed, setCollapsed] = useState(false);
-  const toggleCollapsed = () => {
-    setCollapsed(!collapsed);
-  };
-  
-  return (
-    <div className="header">
-      
-      <Title style={{ background: "#27024B", color:"white", padding:'4%',fontSize:'40px'}}>BookTrackr
-      
-      <div
-      style={{
-        width: 256,
-        float:'right'
-      }}
-    >
+  const menuItems = routes.map((route) => (
+    <Menu.Item key={route.path}>
+      <a href={route.path}>{route.name}</a>
+    </Menu.Item>
+  ));
 
-      <Menu
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
-        mode="inline"
-        theme="dark"
-        inlineCollapsed={collapsed}
-        items={items}
-      />
-    </div>
-    <Avatar onClick={toggleCollapsed} src={<img src={url} />} size={60} style={{float:'right', margin:'5px',backgroundColor: '#87d068'}} icon={<UserOutlined />}>
-      <Layout.Sider style={{ background: "#27024B" }}>
-      {collapsed ?  <img src='none' />: <Avatar />}
-            </Layout.Sider>
-            </Avatar>
-      </Title>
-      
-      {/* <ul>
-        {menuItens}
-      </ul> */}
- 
-    <div >
-      
-    </div>
-    </div>
-    
+  const { Title } = Typography;
+  const url = "man.png";
+
+  const [menuVisible, setMenuVisible] = useState(false);
+  const toggleMenuVisible = () => {
+    setMenuVisible(!menuVisible);
+  };
+
+  const menu = (
+    <Menu theme="dark" selectedKeys={[]} style={{ marginTop: "5px" }}>
+      {menuItems}
+    </Menu>
   );
 
+  return (
+    <div className="header">
+      <Title
+        style={{
+          background: "#27024B",
+          color: "#F3ECEC",
+          padding: "3% 0% 0% 3%",
+          fontSize: "70px",
+          fontWeight: "bolder",
+          fontFamily: "Arial",
+        }}
+      >
+        BookTrackr
+        <div className="search">
+          <Search
+           style={{
+            margin: "0 17% 0 0",
+          width:'70%'}}
+            placeholder="Enter your book title"
+            allowClear
+            enterButton="Track it"
+            size="middle"
+            onSearch={onSearch}
+          />
+          <Dropdown
+            style={{}}
+            overlay={menu}
+            visible={menuVisible}
+            onVisibleChange={toggleMenuVisible}
+            trigger={["click"]}
+            placement="bottomRight"
+          >
+            <Avatar
+              src={<img src={url} alt="an user avatar" />}
+              size={80}
+              style={{
+                float: "right",
+                // margin: "5px",
+                backgroundColor: "#87d068",
+              }}
+              icon={<UserOutlined />}
+            />
+          </Dropdown>
+        </div>
+      </Title>
+    </div>
+  );
 }
 
 export default Header;
