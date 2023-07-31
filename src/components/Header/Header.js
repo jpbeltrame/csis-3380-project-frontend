@@ -8,13 +8,12 @@ import {
 } from "antd";
 import { Typography } from "antd";
 import { UserOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom"; // Import the useNavigate hook to display the results of the search
 
 const { Search } = Input;
-const onSearch = (value) => console.log(value);
+// const onSearch = (value) => console.log(value);
 
-
-
-function Header() {
+function Header( ) {
   const routes = [
     {
       name: "Home",
@@ -52,6 +51,14 @@ function Header() {
     setMenuVisible(!menuVisible);
   };
 
+  const navigate = useNavigate(); //Create a navigate variable using useNavigate to go to result
+
+  const handleSearch = (value) => {
+    // onSearch(value); 
+    // Navigate to the "/searchResults" route with the search query as a state location
+    navigate("/searchResults", { state: { searchQuery: value } });
+  };
+
   const menu = (
     <Menu theme="dark" selectedKeys={[]} style={{ marginTop: "5px" }}>
       {menuItems}
@@ -80,7 +87,7 @@ function Header() {
             allowClear
             enterButton="Track it"
             size="middle"
-            onSearch={onSearch}
+            onSearch={handleSearch} // Call the handleSearch function when search button is clicked
           />
           <Dropdown
             style={{}}

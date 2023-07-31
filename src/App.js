@@ -7,6 +7,7 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import UserProfile from "./pages/UserProfile/UserProfile"
 import WishList from "./pages/WishList/WishList"
+import BookSearchResults from "./components/BookSearchResults/BookSearchResults"
 import { Content } from "antd/es/layout/layout";
 
 
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/user" element={<UserProfile userId={userIdForTesting} />} />
                 <Route path="/wishList" element={<WishList userId={userIdForTesting} />} />
+                <Route path="/searchResults" element={<BookSearchResults/>} />
               </Routes>
             </Content>
             
