@@ -11,8 +11,9 @@ const UserProfile = (props) => {
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
 
+
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/profile/${userId}`)
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}users/profile/${userId}`)
       .then((response) => {
         setUserProfile(response.data);
         setName(response.data.name);
