@@ -1,5 +1,6 @@
 import "./Header.css";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Avatar,
   Menu,
@@ -9,19 +10,18 @@ import {
 import { Typography } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom"; // Import the useNavigate hook to display the results of the search
+import Login from "../../pages/Login/Login";
 
 const { Search } = Input;
 // const onSearch = (value) => console.log(value);
 
-function Header( ) {
+
+
+function Header({setUserId}) {
   const routes = [
     {
       name: "Home",
       path: "/",
-    },
-    {
-      name: "About",
-      path: "/about",
     },
     {
       name: "User Profile",
@@ -45,6 +45,11 @@ function Header( ) {
 
   const { Title } = Typography;
   const url = "man.png";
+  const [username,setUsername] = useState('');
+  // const [userId,setUserId] = useState('');
+
+
+//  const login = document.getElementById('loginDiv');
 
   const [menuVisible, setMenuVisible] = useState(false);
   const toggleMenuVisible = () => {
@@ -65,24 +70,33 @@ function Header( ) {
     </Menu>
   );
 
+  // const handleUsername = (newUsername) =>{
+  //   setUsername(newUsername);
+  //   console.log("username:", username);
+  // }
+
   return (
     <div className="header">
+        <Login setUsername ={setUsername} setUserId={setUserId}/>
       <Title
         style={{
           background: "#27024B",
           color: "#F3ECEC",
-          padding: "3% 0% 0% 3%",
+          padding: "3% 2% 0% 3%",
           fontSize: "70px",
           fontWeight: "bolder",
           fontFamily: "Arial",
+          margin: "0"
         }}
       >
         BookTrackr
-        <div className="search">
+       
+        {/* <div className="search"> */}
           <Search
            style={{
-            margin: "0 17% 0 0",
-          width:'70%'}}
+            margin: "2% 10% 0 0",
+          width:'60%',
+        padding:'0 10% 0 20%'}}
             placeholder="Enter your book title"
             allowClear
             enterButton="Track it"
@@ -97,19 +111,26 @@ function Header( ) {
             trigger={["click"]}
             placement="bottomRight"
           >
-            <Avatar
+             <Link to="/user" style={{ float: "right", marginRight: "1rem" }}>
+            <Avatar id="avatar"
               src={<img src={url} alt="an user avatar" />}
               size={80}
               style={{
                 float: "right",
-                // margin: "5px",
+                visibility:username? "visible": "hidden",
                 backgroundColor: "#87d068",
               }}
               icon={<UserOutlined />}
             />
+            </Link>
           </Dropdown>
-        </div>
+        {/* </div> */}
       </Title>
+      {username && (
+         <p style={{ color: '#FFF6FF', float: 'right', fontSize: 'initial',paddingRight:'2rem',margin:'0 0 1rem'}}>
+           Welcome {username}
+         </p>
+      )}
     </div>
   );
 }

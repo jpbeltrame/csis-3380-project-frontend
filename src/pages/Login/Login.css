@@ -1,0 +1,32 @@
+.loginForm{
+    margin:1rem;
+    float: right;
+    width: 33%;
+}
+
+.ant-btn-primary{
+    background-color:#0061B1;
+}
+
+
+.ant-btn-primary:disabled{
+    background-color: #D5E5F0;
+    color: black;
+}
+
+.signUp{
+    color: aliceblue;
+    text-align: right;
+    width: 85%;
+    margin: 0.5rem;
+}
+
+.signUp a{
+    color:aliceblue;
+    font-weight: bold;
+    font-size:medium;
+}
+
+.signUp a:hover{
+    color:#00ACD6;
+}
