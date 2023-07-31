@@ -27,7 +27,7 @@ function App() {
             <Content>
               <Routes>
                 <Route index element={<Home />} />
-                <Route path="/about" element={<About />} />
+                {/* <Route path="/about" element={<About />} /> */}
                 <Route path="/searchResults" element={<BookSearchResults/>} />
                 <Route path="/signup" element={<SignUp />} />
                 {/* <Route path="/user" element={<UserProfile userId={userIdForTesting} />} /> */}
