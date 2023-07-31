@@ -9,6 +9,7 @@ import SignUp from "./pages/SignUp/SignUp";
 import UserProfile from "./pages/UserProfile/userProfile"
 import WishList from "./pages/WishList/WishList"
 import BookSearchResults from "./components/BookSearchResults/BookSearchResults"
+import BookDetail from "./components/BookDetail/BookDetail"
 import { Content } from "antd/es/layout/layout";
 
 
@@ -34,6 +35,7 @@ function App() {
                 <Route path="/user" element={<UserProfile userId={userId}/>} />
                 {/* <Route path="/wishList" element={<WishList userId={userIdForTesting} />} /> */}
                 <Route path="/wishList" element={<WishList userId={userId} />} />
+                <Route path="/books/:bookId" element={<BookDetail/>} />
                 
               </Routes>
             </Content>
