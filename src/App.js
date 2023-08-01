@@ -30,8 +30,7 @@ function App() {
                 <Route index element={<Home />} />
                 {/* <Route path="/about" element={<About />} /> */}
                 <Route path="/searchResults" element={<BookSearchResults/>} />
-                <Route path="/signup" element={<SignUp />} />
-                {/* <Route path="/user" element={<UserProfile userId={userIdForTesting} />} /> */}
+                <Route path="/signup" element={<SignUp setUserId={setUserId} />} />
                 <Route path="/user" element={<UserProfile userId={userId}/>} />
                 {/* <Route path="/wishList" element={<WishList userId={userIdForTesting} />} /> */}
                 <Route path="/wishList" element={<WishList userId={userId} />} />

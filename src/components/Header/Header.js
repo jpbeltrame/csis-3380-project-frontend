@@ -70,10 +70,7 @@ function Header({setUserId}) {
     </Menu>
   );
 
-  // const handleUsername = (newUsername) =>{
-  //   setUsername(newUsername);
-  //   console.log("username:", username);
-  // }
+
 
   return (
     <div className="header">
