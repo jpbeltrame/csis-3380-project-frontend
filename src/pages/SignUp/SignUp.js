@@ -29,7 +29,7 @@ async function createUser(name, username, password,setUserId) {
   try{
    const response = await axios
     .post(
-      `${process.env.REACT_APP_BACKEND_URL}auth/signup`,
+      `${process.env.REACT_APP_BACKEND_URL}/auth/signup`,
       JSON.stringify(data),
       {
         headers: {

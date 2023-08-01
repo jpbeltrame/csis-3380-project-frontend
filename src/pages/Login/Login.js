@@ -12,7 +12,7 @@ function validateLogin(username,password,setUsername,setUserId){
    password: password
   };
 
-  axios.post(`${process.env.REACT_APP_BACKEND_URL}auth/signin/`,JSON.stringify(data), {
+  axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth/signin/`,JSON.stringify(data), {
     headers: {
       'Content-Type': 'application/json'
     }

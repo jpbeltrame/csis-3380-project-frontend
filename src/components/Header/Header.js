@@ -108,7 +108,7 @@ function Header({setUserId}) {
             trigger={["click"]}
             placement="bottomRight"
           >
-             <Link to="/user" style={{ float: "right", marginRight: "1rem" }}>
+             {/* <Link to="/user" style={{ float: "right", marginRight: "1rem" }}> */}
             <Avatar id="avatar"
               src={<img src={url} alt="an user avatar" />}
               size={80}
@@ -119,7 +119,7 @@ function Header({setUserId}) {
               }}
               icon={<UserOutlined />}
             />
-            </Link>
+            {/* </Link> */}
           </Dropdown>
         {/* </div> */}
       </Title>

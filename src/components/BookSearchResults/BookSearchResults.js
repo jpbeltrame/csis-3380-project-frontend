@@ -19,7 +19,7 @@ const BookSearchResults = () => {
 
     // Fetch initial 10 books when component is mounted
     axios
-      .get(`${process.env.REACT_APP_BACKEND_URL}booksWithQuery`, {
+      .get(`${process.env.REACT_APP_BACKEND_URL}/booksWithQuery`, {
         params: {
           query: searchQuery,
           limit: 10,

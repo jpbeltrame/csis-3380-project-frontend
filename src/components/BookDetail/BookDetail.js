@@ -60,10 +60,17 @@ const BookDetail = () => {
                 {authors && <p>Authors: {authors.join(', ')}</p>}
                 {publisher && <p>Publisher: {publisher}</p>}
                 {pageCount && <p>Pages: {pageCount}</p>}
-                {saleInfo && (
+                { saleInfo ? (
                   <p>
                     Saleability: {saleInfo.saleability} - Ebook: {saleInfo.isEbook ? 'Yes' : 'No'}
                   </p>
+                ) : (
+                  <p>No sale information available</p>
+                )}
+                { saleInfo.buyLink ? (
+                  <p> Buy link: <a href= {saleInfo.buyLink}> {saleInfo.buyLink} </a> </p>
+                ) : (
+                  <p> No buy link Available </p>
                 )}
                 {description && <p>Description: {description}</p>}
                 {/* Add more details as needed */}
