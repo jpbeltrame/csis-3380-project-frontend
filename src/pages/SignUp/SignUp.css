@@ -1,0 +1,29 @@
+.signUpForm form {
+    margin-top: 5rem;
+    margin-left: 35rem;
+    margin-bottom: 5rem;
+    /* max-width: 00px; */
+}
+
+.ant-form-item-label {
+    max-width: 800px;
+    color: aqua;
+}
+
+.ant-input{
+    max-width: 400px;
+}
+
+.ant-input-password{
+    width:auto;
+}
+
+.button div{
+    align-items: center;
+    
+}
+
+.invalidMessage p{
+    margin:0;
+    color:red;
+}
