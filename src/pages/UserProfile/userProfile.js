@@ -7,15 +7,18 @@ import { Card, Spin, Button,
   Switch,
   Upload, } from 'antd';
   import { PlusOutlined } from '@ant-design/icons';
+  import { useUserContext } from '../../UserContext'; // Import the useUserContext hook
 
-const UserProfile = (props) => {
-  const { userId } = props;
-  console.log('userprofile',userId);
+
+const UserProfile = () => {
+  const { userId, username, setUsername } = useUserContext(); // Access the userId from the context
+  // const { userId, username, setUsername } = props; // Access the userId and username and setUsername function from props
+  console.log('userId',userId);
   const [userProfile, setUserProfile] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isEditMode, setIsEditMode] = useState(false);
   const [name, setName] = useState('');
-  const [username, setUsername] = useState('');
+  // const [username, setUsername] = useState('');
 
 
   useEffect(() => {
@@ -54,6 +57,7 @@ const UserProfile = (props) => {
         setUserProfile(response.data);
         setIsEditMode(false);
         alert('Changes saved successfully!');
+        setUsername(username); // Update the username in the context
       })
       .catch((error) => {
         console.error('Error updating user profile:', error);
@@ -69,7 +73,7 @@ const UserProfile = (props) => {
   return (
     <div>
       <h2 className="title">User Profile</h2>
-      {/* <div className="cardContainer">
+      <div className="cardContainer">
         <Card style={{ width: 300 }}>
           {isEditMode ? (
             <>
@@ -84,99 +88,97 @@ const UserProfile = (props) => {
               <button onClick={handleEditClick}>Edit</button>
             </>
           )}
-        </Card> */}
-       
-        {isEditMode? (
-          <div className="userForm">
-           <Form
-           labelCol={{
-             span: 4,
-           }}
-           wrapperCol={{
-             span: 14,
-           }}
-           layout="horizontal"
-          //  max-width='600px'
-         >
- <Form.Item label="Edit" valuePropName="checked"  >
- <Switch onChange={(e) => handleEditClick()} defaultChecked="true"/>
-</Form.Item>
-<Form.Item name="fullname" label="Your Name" initialValue={name} onChange={(e) => setName(e.target.value)}>
-<Input />
-</Form.Item>
-<Form.Item name="username" label="Username"  initialValue={username} onChange={(e) => setUsername(e.target.value)}>
-<Input />
-</Form.Item>         
-<Form.Item label="Avatar" valuePropName="fileList">
- <Upload action="/upload.do" listType="picture-card">
-   <div>
-     <PlusOutlined />
-     <div
-       style={{
-         marginTop: 8,
-       }}
-     >
-       Upload
-     </div>
-   </div>
- </Upload>
-</Form.Item>
-<Form.Item className="button">
-<Button onClick={handleSaveClick}>Save</Button>
-</Form.Item>
-</Form>
-</div>
-        ):
-        (
-          <>
-               
-                <p className="switch">Edit 
-                <Switch onChange={(e) => handleEditClick()}/>
-                </p>
-                <div className="userFormDisabled">
-          <Form
-        labelCol={{
-          span: 4,
-        }}
-        wrapperCol={{
-          span: 14,
-        }}
-        layout="horizontal"
-        disabled={true}
-      >
-          
-         <Form.Item name="fullname" label="Your Name" initialValue={name}>
-         <Input />
-         </Form.Item>
-         <Form.Item name="username" label="Username"  initialValue={username}>
-         <Input />
-         </Form.Item>         
-         <Form.Item label="Avatar" valuePropName="fileList">
-          <Upload action="/upload.do" listType="picture-card">
-            <div>
-              <PlusOutlined />
-              <div
-                style={{
-                  marginTop: 8,
-                }}
-              >
-                Upload
-              </div>
-            </div>
-          </Upload>
-         </Form.Item>
-         <Form.Item className="button">
-         </Form.Item>
-         </Form>
-         </div>
-         </>
-
-        )}
-          
-      
+        </Card>
       </div>
-    // </div>
+    </div>
   );
 };
 
 export default UserProfile;
+
+
+/* 
+{isEditMode ? (
+        <div className="userForm">
+          <Form
+            labelCol={{
+              span: 4,
+            }}
+            wrapperCol={{
+              span: 14,
+            }}
+            layout="horizontal"
+          >
+            <Form.Item label="Edit" valuePropName="checked"  >
+              <Switch onChange={(e) => handleEditClick()} defaultChecked={true} />
+            </Form.Item>
+            <Form.Item name="fullname" label="Your Name">
+              <Input value={name} onChange={(e) => setName(e.target.value)} />
+            </Form.Item>
+            <Form.Item name="username" label="Username">
+              <Input value={username} onChange={(e) => setUsername(e.target.value)} />
+            </Form.Item>         
+            <Form.Item label="Avatar" valuePropName="fileList">
+              <Upload action="/upload.do" listType="picture-card">
+                <div>
+                  <PlusOutlined />
+                  <div
+                    style={{
+                      marginTop: 8,
+                    }}
+                  >
+                    Upload
+                  </div>
+                </div>
+              </Upload>
+            </Form.Item>
+            <Form.Item className="button">
+              <Button onClick={handleSaveClick}>Save</Button>
+            </Form.Item>
+          </Form>
+        </div>
+      ) : (
+        <>
+          <p className="switch">
+            Edit 
+            <Switch onChange={(e) => handleEditClick()} />
+          </p>
+          <div className="userFormDisabled">
+            <Form
+              labelCol={{
+                span: 4,
+              }}
+              wrapperCol={{
+                span: 14,
+              }}
+              layout="horizontal"
+              disabled={true}
+            >
+              <Form.Item name="fullname" label="Your Name">
+                <Input value={name} />
+              </Form.Item>
+              <Form.Item name="username" label="Username">
+                <Input value={username} />
+              </Form.Item>         
+              <Form.Item label="Avatar" valuePropName="fileList">
+                <Upload action="/upload.do" listType="picture-card">
+                  <div>
+                    <PlusOutlined />
+                    <div
+                      style={{
+                        marginTop: 8,
+                      }}
+                    >
+                      Upload
+                    </div>
+                  </div>
+                </Upload>
+              </Form.Item>
+              <Form.Item className="button">
+                {/* No buttons needed in disabled mode */
+                // </Form.Item>
+                // </Form>
+              // </div>
+            // </>
+          // )}
+// */
