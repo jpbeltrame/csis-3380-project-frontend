@@ -36,7 +36,7 @@ function Header() {
       path: "/user",
     },
     {
-      name: "Wish Lists",
+      name: "Wishlist",
       path: "/wishList",
     },
     {

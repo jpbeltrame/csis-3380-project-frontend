@@ -4,21 +4,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%; /* Add this line to ensure the container takes the full height */
+  height: 100%;
+  padding: 20px; /* Add padding to create margins from edges */
 }
 
 .title2 {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
-  text-align: center; /* Add this line to center the text within the title */
+  text-align: center;
 }
 
 .cardContainer {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
+  flex-wrap: wrap; /* Add this line to wrap cards into multiple rows */
+  justify-content: center; /* Center cards horizontally */
+  gap: 20px; /* Add gap between cards */
 }
 
 .card {
@@ -27,6 +28,9 @@
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card p {
@@ -38,4 +42,11 @@
 .card:hover {
   transform: translateY(-5px);
   transition: transform 0.3s ease;
+}
+
+.buyLink {
+  color: #1890ff;
+  font-weight: bold;
+  width: 100%; /* Set a fixed width for the link container */
+  word-wrap: break-word; /* Allow the link text to wrap if it exceeds the container width */
 }

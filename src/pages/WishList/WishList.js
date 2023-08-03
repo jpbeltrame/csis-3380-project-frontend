@@ -1,55 +1,118 @@
-import "./WishList.css";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card, Spin } from 'antd';
-import { useUserContext } from '../../UserContext'; // Import the useUserContext hook
+import { useUserContext } from '../../UserContext';
+import './WishList.css'; // Import the CSS file here
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+
+const { Meta } = Card;
 
 const WishList = () => {
-  const { userId } = useUserContext(); // Access the userId from the context
-  const [userProfile, setUserProfile] = useState({});
+  const { userId, username } = useUserContext();
+  const [wishlist, setWishlist] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch user profile data, including wishlist
-    axios.get(`${process.env.REACT_APP_BACKEND_URL}/users/profile/wishlist/${userId}`)
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/users/profile/wishlist/${userId}`)
       .then((response) => {
-        setUserProfile(response.data);
+        setWishlist(response.data.distinctBooks);
         setIsLoading(false);
       })
       .catch((error) => {
         console.error('Error fetching wishlist:', error);
         setIsLoading(false);
       });
-  }, [userId]); // Use userId as a dependency in the useEffect to trigger the API request whenever it changes
-
-  console.log('WishList.js - userId:', userId); // Add this line to check the value of userId
+  }, [userId]);
 
   if (isLoading) {
-    return <Spin size="large" />; // Show a loading spinner while data is loading
+    return <Spin size="large" />;
   }
-
-  const { name, wishlist } = userProfile;
 
   return (
     <div className="container">
-      <h2 className="title2">Wish List for {name}</h2>
+      <h2 className="title2">Wish List for {username}</h2>
       {wishlist.length === 0 ? (
         <div className="cardContainer">
-        <div>No items in the wishlist.</div>
+          <div>No items in the wishlist.</div>
         </div>
       ) : (
-        wishlist.map((item) => (
-          <div className="cardContainer" key={item.id}>
-            <Card style={{ width: 300 }}>
-              <p>Item: {item}</p> {/* Assuming the item object has a 'name' property */}
-              {/* Add other properties from the 'item' object as needed */}
-            </Card>
-          </div>
-        ))
-        
+        <div className='cardContainer'>
+          {wishlist.map((bookId) => (
+            <BookItem key={bookId} bookId={bookId} />
+          ))}
+        </div>
       )}
     </div>
   );
 };
+
+const BookItem = ({ bookId }) => {
+  const [bookDetails, setBookDetails] = useState(null);
+  const navigate = useNavigate(); 
+
+  useEffect(() => {
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/books/${bookId}`)
+      .then((response) => {
+        setBookDetails(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching book details:', error);
+        setBookDetails(null);
+      });
+  }, [bookId]);
+
+  if (!bookDetails) {
+    // Handle the case where book details could not be fetched
+    return <div>Book details not available.</div>;
+  }
+
+  const {
+    volumeInfo: {
+      title,
+      authors,
+      publisher,
+      description,
+      imageLinks,
+    },
+    saleInfo: {
+      buyLink,
+      saleability,
+    },
+  } = bookDetails;
+
+  return (
+    <div className="cardContainer">
+      <Card className="card">
+        <div>
+          <img alt={title} src={imageLinks?.thumbnail || 'placeholder.jpg'} />
+          <Meta
+            title={title}
+            description={authors?.join(', ')}
+          />
+          <div className="bookDetails">
+            <p><strong>Publisher:</strong> {publisher || 'N/A'}</p>
+            {/* <p><strong>Description:</strong> {description || 'N/A'}</p> */}
+            {saleability === 'FOR_SALE' && (
+              <p><strong>Status:</strong> Available for Sale</p>
+            )}
+            {saleability === 'NOT_FOR_SALE' && (
+              <p><strong>Status:</strong> Not Available for Sale</p>
+            )}
+          </div>
+        </div>
+        {buyLink && (
+          <a href={buyLink} target="_blank" rel="noopener noreferrer" className="buyLink">
+            Buy Now: {buyLink}
+          </a>
+        )}
+         {/* Add the button to navigate to bookDetails */}
+        <button onClick={() => navigate(`/books/${bookId}`)}>View Details</button>
+      </Card>
+    </div>
+  );
+};
+
 
 export default WishList;
