@@ -104,8 +104,10 @@ function Header() {
           margin: "0"
         }}
       >
-        BookTrackr
-       
+        {/* Use Link component for navigation */}
+        <Link to="/" style={{ textDecoration: "none", color: "#F3ECEC" }}>
+          BookTrackr
+        </Link>
         {/* <div className="search"> */}
           <Search
            style={{
