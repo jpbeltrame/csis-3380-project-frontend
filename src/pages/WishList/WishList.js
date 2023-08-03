@@ -108,7 +108,9 @@ const BookItem = ({ bookId }) => {
           </a>
         )}
          {/* Add the button to navigate to bookDetails */}
-        <button onClick={() => navigate(`/books/${bookId}`)}>View Details</button>
+        <div className="viewDetailsButton">
+          <button onClick={() => navigate(`/books/${bookId}`)}>View Details</button>
+        </div>
       </Card>
     </div>
   );
