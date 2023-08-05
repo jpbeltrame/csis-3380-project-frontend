@@ -135,7 +135,9 @@ const BookDetail = () => {
                 ) : (
                   <p> No buy link Available </p>
                 )}
-                {description && <p>Description: {description}</p>}
+                {description && 
+                  <div dangerouslySetInnerHTML={{__html: description}}></div>
+                  }
                 {/* Add more details as needed */}
               </div>
             </Col>
