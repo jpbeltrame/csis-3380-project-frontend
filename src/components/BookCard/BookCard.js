@@ -8,7 +8,7 @@ const BookCard = (props) => {
   const book = props.book.volumeInfo;
   const title = book.title;
   const coverPath = book.imageLinks && book.imageLinks.smallThumbnail ? book.imageLinks.smallThumbnail : "no-cover.jpg";
-  const authors = book.authors.join(', ') ?? "";
+  const authors = book.authors ? book.authors.join(', ') : "Unknow";
   const publisher = book.publisher ?? "-";
 
   return (
