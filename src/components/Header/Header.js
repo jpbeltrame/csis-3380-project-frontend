@@ -10,7 +10,7 @@ import {
 import { Typography } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom"; // Import the useNavigate hook to display the results of the search
-import Login from "../../pages/Login/Login";
+import Login from "../Login/Login";
 import { useUserContext } from "../../UserContext"; // Import the useUserContext hook
 
 const { Search } = Input;
