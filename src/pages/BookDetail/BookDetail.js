@@ -3,8 +3,8 @@ import './BookDetail.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { CheckOutlined } from '@ant-design/icons';
-import { Layout, Card, Row, Col, Button, message } from 'antd';
+import { CheckOutlined, StarFilled, StarOutlined, StarTwoTone } from '@ant-design/icons';
+import { Layout, Card, Row, Col, Button, message, Input } from 'antd';
 import { useUserContext } from '../../UserContext';
 
 const { Content } = Layout;
@@ -14,7 +14,6 @@ const BookDetail = () => {
   const [bookDetail, setBookDetail] = useState(null);
   const [isInWishlist, setIsInWishlist] = useState(false);
   const [wishlistUpdated, setWishlistUpdated] = useState(false);
-
   const { userId, username } = useUserContext();
 
   useEffect(() => {
@@ -44,6 +43,7 @@ const BookDetail = () => {
 
   const {
     volumeInfo: {
+    
       title,
       imageLinks,
     },
@@ -78,7 +78,7 @@ const BookDetail = () => {
       <img
         src={path}
         alt={alt}
-        style={{ maxHeight: '400px', objectFit: 'contain', width: '100%' }}
+        style={{ maxHeight: '360px', objectFit: 'contain', width: '100%', marginBottom: '20px' }}
       />
     );
   }
@@ -92,33 +92,53 @@ const BookDetail = () => {
     const publisher = book.publisher ?? '';
     const pageCount = book.pageCount ?? '';
     const description  = book.description ?? '';
-
-    
-    const saleability = bookDetail.saleInfo.saleability ?? '';
-    const isEbook = !!(bookDetail.saleInfo.isEbook);
+    const averageRating = book.averageRating ?? 0;
     const buyLink = bookDetail.saleInfo.buyLink ?? ' - ';
 
+
+    
 
     return (
       <div>
         <h2 style={{marginTop: 0}}>{title}</h2>
         <span><b>Authors:</b> {authors.join(', ')}</span><br />
         <span><b>Publisher:</b> {publisher}</span><br />
-        <span><b>Pages:</b> {pageCount}</span><br />
-
-        {saleability ? (
-          <span><b>Saleability:</b> {saleability} - <b>Ebook:</b> {isEbook ? 'Yes' : 'No'}</span>
-        ) : (
-          <p>No sale information available</p>
-        )} <br />
-        
-        <span><b>Buy link:</b> <a target='_blank' rel='noreferrer' href={buyLink}> {buyLink} </a> </span> 
+        <span><b>Pages:</b> {pageCount}</span><br />        
+        <span><b>Rating:</b> <Rating rating={averageRating} /></span><br />
+        <span><b>Buy link:</b> <a target='_blank' rel='noreferrer' href={buyLink}> {buyLink} </a> </span> <br />
 
         <h3>Description</h3>
         <div className='book-description' dangerouslySetInnerHTML={{ __html: description }}></div>
       </div>
     );
   }
+
+  function Rating({rating}) {
+    const roundedRating = Math.ceil(rating);
+
+    let buffer = [];
+    for(let i = 1; i <= 5; i++ ) {
+      if (i <= roundedRating) {
+        buffer.push(<StarFilled />);
+      } else {
+        buffer.push(<StarOutlined />);
+      }
+    }
+
+    return (<spam> {buffer} </spam>);
+  } 
+
+  function Review ({bookId, rating}) {
+
+    return (
+      <div>
+        <h3>Reviews</h3>
+
+        <Input.TextArea rows={5} />
+      </div>
+    );
+  }
+
   return (
     <Layout>
       <Content style={{ padding: '20px' }}>
@@ -126,9 +146,28 @@ const BookDetail = () => {
           <Row gutter={[16, 16]}>
             <Col xs={24} sm={24} md={12} lg={8}>
               <BookCover imageLinks={imageLinks} alt={title} />
+
+              {wishlistUpdated ? (
+                <div style={{ display: 'block', alignItems: 'center', marginLeft: '150px' }}>
+                  <CheckOutlined style={{ color: '#52c41a', marginRight: 8 }} />
+                  <span>Book already in your wishlist</span>
+                </div>
+              )    
+                :
+                isInWishlist ? (
+                  <div style={{ display: 'block', alignItems: 'center', marginLeft: '150px' }}>
+                    <CheckOutlined style={{ color: '#52c41a', marginRight: 8 }} />
+                    <span>Book already in your wishlist</span>
+                  </div>
+                ) : (
+                  <Button onClick={handleAddToWishlist} type="primary" block>
+                    Add to Wishlist
+                  </Button>
+                )}
             </Col>
             <Col xs={24} sm={24} md={12} lg={16}>
               <BookDetail bookDetail={bookDetail} />
+              <Review bookId={bookId} /> 
             </Col>
           </Row>
         </Card>
