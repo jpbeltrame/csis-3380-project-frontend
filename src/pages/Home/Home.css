@@ -1,0 +1,190 @@
+@keyframes fadeIn {
+    from {
+        transform: translateY(15%);
+        opacity: 0;
+        visibility: hidden;
+
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.icons {
+    animation: fadeIn 2s ease-in-out;
+}
+
+
+#banner {
+    margin-left:1rem ;
+    width: 98.5%;
+    height: 40vh;
+    background-image: url("../../../public/logo.PNG");
+    position: relative;
+    text-align: center;
+    border-color: #666;
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-color: #27024B;
+    /* background-attachment: fixed; */
+    background-position: center;
+}
+
+#slogan {
+    position: relative;
+    top: 10rem;
+    left: 25rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 35px;
+    color: rgb(181, 222, 236)
+}
+
+.icons img {
+    height: 8rem;
+    margin-top: 5rem;
+}
+
+.icons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0 70px;
+    flex: 1;
+    max-width: 300px;    
+
+}
+
+
+#benefits {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10rem;
+}
+
+#video {
+    text-align: center;
+    margin-top: 15rem;
+    margin-bottom: 5rem;
+}
+
+.videoWrapper{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.video.in-view{
+    align-items: center;
+    animation: fadeIn 4s ease-in-out;
+}
+
+
+.subtitle {
+    font-size: 32px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 5rem;
+}
+
+.benTitle {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.wishlist {
+    display: flex;
+    justify-content: center;
+}
+
+.wishlist img {
+    height: 15rem;
+    margin-left: 22rem;
+}
+
+.description {
+    font-size: 14px;
+    margin-left: 5rem;
+    width: 60%;
+}
+
+.wishTitle {
+    font-size: 32px;
+    margin-left: 5rem;
+}
+
+.end {
+    text-align: center;
+    font-weight: bold;
+    height: 50vh;
+    width: 100%;
+    margin-bottom: 5rem;
+    margin-top: 10rem;
+    background-image: url("../../../public/books.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.8;
+}
+
+.endTitle {
+    font-size: 32px;
+    font-weight: bold;
+    padding-top: 10rem;
+    text-align: center;
+    color: #002071;
+    text-shadow: 1px 1px 2px white;
+    opacity: 1;
+}
+
+#sign {
+    color: white;
+    font-weight: lighter;
+    text-shadow: 1px 1px 2px #0c0c0c;
+}
+
+.gradient-button {
+    margin-top: 2rem;
+    /* Set the background gradient using linear-gradient */
+    background: linear-gradient(to right, #7583E7, #002071);
+    /* Additional styling */
+    color: #fff;
+    /* Text color, use a contrasting color to the gradient */
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    /* Remove default button border */
+    border-radius: 4px;
+    cursor: pointer;
+    /* Add other styles like box-shadow, etc., as per your design preferences */
+}
+
+/* Optional: Hover effect */
+.gradient-button:hover {
+    background: linear-gradient(to right, #002071, #7583E7);
+    /* Adjust the colors to change the gradient on hover */
+}
+
+@keyframes slideRight {
+    from {
+        transform: translateX(0%);
+        opacity: 0;
+        visibility: hidden;
+
+    }
+
+    to {
+        transform: translateX(5%);
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.listIcon.in-view{
+    animation: slideRight 1.5s ease-in-out;
+}
