@@ -8,7 +8,7 @@ function Footer() {
       <div className="footer">
         <span>
           <p className="company">BookTrackr</p>
-          <p className="description">
+          <p>
             &copy; 2023 Produced by BookTrackr Corporation
           </p>
         </span>

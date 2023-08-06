@@ -19,10 +19,10 @@
 
 
 #banner {
-    margin-left:1rem ;
-    width: 98.5%;
-    height: 40vh;
-    background-image: url("../../../public/logo.PNG");
+    margin-top: 1rem;
+    width: 100%;
+    height: 50vh;
+    background-image: url("../../../public/logo.jpg");
     position: relative;
     text-align: center;
     border-color: #666;
@@ -89,7 +89,7 @@
     font-size: 32px;
     text-align: center;
     font-weight: bold;
-    margin-top: 5rem;
+    margin-top: 1rem;
 }
 
 .benTitle {
