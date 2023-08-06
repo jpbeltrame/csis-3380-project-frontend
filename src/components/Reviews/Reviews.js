@@ -14,11 +14,16 @@ const Reviews = ({bookId, rating}) => {
       return Math.floor(Math.random() * max);
     }
 
+    const d = new Date();
+    const month = '' + (d.getMonth() + 1);
+    const day = '' + d.getDate();
+    const year = d.getFullYear();
+
     const review = {
       id: getRandomInt(100000),
       userName: "Joao Pedro Beltrame",
       text,
-      date: '05/05/2023'
+      date: [day , month, year].join('/')
     }
 
     setBookReview(bookReviews => [...bookReviews, review]);
