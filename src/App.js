@@ -21,8 +21,8 @@ function App() {
   return (
     <BrowserRouter>
       <UserProvider>
-        <div className="App">
-          <Layout hasSider="true">
+        <div className="app">
+          <Layout hasSider="true" >
             <Header />
             <Layout>
               <Content>

@@ -3,18 +3,9 @@ import { PlusOutlined } from "@ant-design/icons";
 import {
   Button,
   Card,
-  Cascader,
-  Checkbox,
   DatePicker,
   Form,
   Input,
-  InputNumber,
-  Radio,
-  Select,
-  Slider,
-  Switch,
-  TreeSelect,
-  Upload,
   message
 } from "antd";
 import React, { useState } from "react";
@@ -90,74 +81,76 @@ function SignUp() {
     }
 
   return (
-    <div className="signUpForm">
-      {registrationSuccess ? (
-        // Show the success card wrapped inside the container for centering
-        <div className="registrationSuccessContainer">
-          <Card className="registrationSuccessCard" title="Registration Successful">
-            <p>You can now log in.</p>
-          </Card>
-        </div>
-      ) : (
-        // Show the registration form if registrationSuccess state is false
-        <Form
-          form={form}
-          labelCol={{
-            span: 4,
-          }}
-          wrapperCol={{
-            span: 14,
-          }}
-          layout="horizontal"
-        >
-          <Form.Item name="fullname" label="Your Name">
-            <Input />
-          </Form.Item>
-          <Form.Item name="username" label="Username">
-            <Input />
-          </Form.Item>
-          <Form.Item
-            name="password"
-            label="Password"
-            rules={[
-              {
-                required: true,
-                message: "Please input your password!",
-              },
-            ]}
-            hasFeedback
+    <Card style={{margin: '15px 20px 0 20px'}}>
+      <div className="signUpForm">
+        {registrationSuccess ? (
+          // Show the success card wrapped inside the container for centering
+          <div className="registrationSuccessContainer">
+            <Card className="registrationSuccessCard" title="Registration Successful">
+              <p>You can now log in.</p>
+            </Card>
+          </div>
+        ) : (
+          // Show the registration form if registrationSuccess state is false
+          <Form
+            form={form}
+            labelCol={{
+              span: 4,
+            }}
+            wrapperCol={{
+              span: 14,
+            }}
+            layout="horizontal"
           >
-            <Input.Password />
-          </Form.Item>
-
-          <Form.Item
-            name="confirm"
-            label="Re-enter Password"
-            dependencies={["password"]}
-            hasFeedback
-            rules={[
-              {
-                required: true,
-                message: "Please confirm your password!",
-              },
-              ({ getFieldValue }) => ({
-                validator(_, value) {
-                  if (!value || getFieldValue("password") === value) {
-                    return Promise.resolve();
-                  }
-                  return Promise.reject(new Error("The new password that you entered do not match!"));
+            <Form.Item name="fullname" label="Your Name">
+              <Input />
+            </Form.Item>
+            <Form.Item name="username" label="Username">
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name="password"
+              label="Password"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your password!",
                 },
-              }),
-            ]}
-          >
-            <Input.Password />
-          </Form.Item>
-          <Form.Item className="button">
-            <Button onClick={handleSignup}>Create your BookTrackr account</Button>
-          </Form.Item>
-        </Form>
-      )}
-    </div>
+              ]}
+              hasFeedback
+            >
+              <Input.Password />
+            </Form.Item>
+
+            <Form.Item
+              name="confirm"
+              label="Re-enter Password"
+              dependencies={["password"]}
+              hasFeedback
+              rules={[
+                {
+                  required: true,
+                  message: "Please confirm your password!",
+                },
+                ({ getFieldValue }) => ({
+                  validator(_, value) {
+                    if (!value || getFieldValue("password") === value) {
+                      return Promise.resolve();
+                    }
+                    return Promise.reject(new Error("The new password that you entered do not match!"));
+                  },
+                }),
+              ]}
+            >
+              <Input.Password />
+            </Form.Item>
+            <Form.Item className="button">
+              <Button onClick={handleSignup}>Create your BookTrackr account</Button>
+            </Form.Item>
+          </Form>
+        )}
+      </div>
+    </Card>
   );
 }
 

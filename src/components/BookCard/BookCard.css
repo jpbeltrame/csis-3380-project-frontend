@@ -1,5 +1,12 @@
 .book-card {
   height: 450px;
+  overflow: hidden;
+}
+
+.book-card h3{
+  max-height: 58px; 
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .book-card img{

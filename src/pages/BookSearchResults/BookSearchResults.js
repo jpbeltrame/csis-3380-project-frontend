@@ -1,9 +1,9 @@
 import './BookSearchResults.css';
-import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Button } from 'antd';
+import React, { useState, useEffect } from 'react';
 import BookCard from '../../components/BookCard/BookCard';
-import { useLocation } from 'react-router-dom'; // Import useNavigate
+import { useLocation } from 'react-router-dom';
+import { Button } from 'antd';
 
 const BookSearchResults = () => {
   const [books, setBooks] = useState([]);
@@ -13,23 +13,21 @@ const BookSearchResults = () => {
   const searchQuery = location.state?.searchQuery;
 
   useEffect(() => {
-    // Reset the books state to an empty array whenever searchQuery changes
     setBooks([]);
-    setStartIndex(0); // Reset startIndex to 0 for new search
+    setStartIndex(0);
 
-    // Fetch initial 10 books when component is mounted
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/booksWithQuery`, {
         params: {
           query: searchQuery,
           limit: 10,
-          offset: 0, // Start with 0 offset
+          offset: 0,
         },
       })
       .then((response) => {
         setBooks(response.data.items);
         setTotalBooks(response.data.totalItems);
-        setStartIndex(10); // Set startIndex to 10 as we already have the initial 10 books
+        setStartIndex(10);
       })
       .catch((error) => {
         console.error('Error fetching search results:', error);
@@ -56,6 +54,7 @@ const BookSearchResults = () => {
         console.error('Error fetching search results:', error);
       });
   };
+
   const renderBookCards = () => {
     return books.map((book) => (
       <BookCard book={book} key={book.id} />
@@ -63,9 +62,11 @@ const BookSearchResults = () => {
   };
 
   return (
-    <div className="book-cards-container">
-      {renderBookCards()}
-      {totalBooks > startIndex && <Button onClick={handleLoadMore}>Load More</Button>}
+    <div>
+      <div className="book-cards-container">
+        {renderBookCards()}
+      </div>
+      {totalBooks > startIndex && <Button className='load-more' onClick={handleLoadMore}>Load More</Button>}
     </div>
   );
 };
