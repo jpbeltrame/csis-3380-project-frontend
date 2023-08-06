@@ -21,7 +21,7 @@
 #banner {
     margin-top: 1rem;
     width: 100%;
-    height: 50vh;
+    height: 40vh;
     background-image: url("../../../public/logo.jpg");
     position: relative;
     text-align: center;
@@ -121,7 +121,7 @@
 .end {
     text-align: center;
     font-weight: bold;
-    height: 50vh;
+    height: 55vh;
     width: 100%;
     margin-bottom: 5rem;
     margin-top: 10rem;
@@ -135,21 +135,20 @@
 .endTitle {
     font-size: 32px;
     font-weight: bold;
-    padding-top: 10rem;
+    padding-top: 12.5rem;
     text-align: center;
     color: #002071;
-    text-shadow: 1px 1px 2px white;
+    text-shadow: 1px 1px 2px rgb(153, 154, 223);
     opacity: 1;
 }
 
 #sign {
-    color: white;
     font-weight: lighter;
-    text-shadow: 1px 1px 2px #0c0c0c;
+    /* text-shadow: 1px 1px 2px #0c0c0c; */
 }
 
 .gradient-button {
-    margin-top: 2rem;
+    /* margin-top: 1rem; */
     /* Set the background gradient using linear-gradient */
     background: linear-gradient(to right, #7583E7, #002071);
     /* Additional styling */

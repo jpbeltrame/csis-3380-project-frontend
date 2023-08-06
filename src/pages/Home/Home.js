@@ -2,6 +2,7 @@ import React, {useEffect,useState} from "react";
 import {Element,scroller} from "react-scroll";
 import { Navigate, useNavigate } from "react-router-dom";
 import "./Home.css";
+import { Card } from "antd";
 
 function Home() {
   const icon1 = "research.png";
@@ -68,6 +69,7 @@ function Home() {
   }, []);
 
   return (
+    <Card style={{margin: '20px'}}>
     <div>
       <div id="banner">
         <span id="slogan">
@@ -140,6 +142,7 @@ function Home() {
 
       </div>
     </div>
+    </Card>
   );
 }
 
