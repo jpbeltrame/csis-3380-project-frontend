@@ -128,7 +128,6 @@ function Header() {
             trigger={["click"]}
             placement="bottomRight"
           >
-             {/* <Link to="/user" style={{ float: "right", marginRight: "1rem" }}> */}
             <Avatar id="avatar"
               src={<img src={url} alt="an user avatar" />}
               size={80}
@@ -139,12 +138,11 @@ function Header() {
               }}
               icon={<UserOutlined />}
             />
-            {/* </Link> */}
           </Dropdown>
         {/* </div> */}
       </Title>
       {username && (
-         <p style={{ color: '#FFF6FF', float: 'right', fontSize: 'initial',paddingRight:'2rem',margin:'0 0 1rem'}}>
+         <p style={{ color: '#FFF6FF', float: 'right', fontSize: 'initial',paddingRight:'1rem', paddingTop:'1rem'}}>
            Welcome {username}
          </p>
       )}
