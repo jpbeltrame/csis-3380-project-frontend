@@ -1,11 +1,7 @@
 import "./UserProfile.css";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Card, Spin, Button,
-  Form,
-  Input,
-  Switch,
-  Upload, } from 'antd';
+import { Card, Spin } from 'antd';
   import { PlusOutlined } from '@ant-design/icons';
   import { useUserContext } from '../../UserContext'; // Import the useUserContext hook
 
