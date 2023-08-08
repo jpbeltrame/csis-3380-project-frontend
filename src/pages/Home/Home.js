@@ -3,6 +3,7 @@ import {Element,scroller} from "react-scroll";
 import { Navigate, useNavigate } from "react-router-dom";
 import "./Home.css";
 import { Card } from "antd";
+import { useUserContext } from "../../UserContext"; // Import the useUserContext hook
 
 function Home() {
   const icon1 = "research.png";
@@ -15,6 +16,9 @@ function Home() {
   const [isVideoInView, setIsVideoInView] = useState(false);
   const [isListInView, setIsListInView] = useState(false);
 
+// Use the useUserContext hook to access the userId and username
+const { userId, username } = useUserContext();
+
   const scrollToVideo = () => {
     scroller.scrollTo("video", {
       duration: 500,
@@ -22,6 +26,7 @@ function Home() {
       smooth: "easeInOutQuart",
     });
   };
+
   useEffect(() => {
     const handleScroll = () => {
       const videoElement = document.querySelector("#video");
@@ -136,9 +141,20 @@ function Home() {
       </Element>
       <div className="end">
         <p className="endTitle">Encounter Your Next Great Reading</p>
-        <p id="sign">Sign Up Now and Explore the World of Books!</p>
-        <button className="gradient-button" onClick={()=>navigate("/signup")}>Sign Up</button>
-
+        <p id="sign">
+            {userId || username
+              ? "Explore Your Wishlist and Discover More!"
+              : "Sign Up Now and Explore the World of Books!"}
+          </p>
+          {userId || username ? (
+            <button className="gradient-button" onClick={() => navigate("/wishlist")}>
+              Explore Wishlist
+            </button>
+          ) : (
+            <button className="gradient-button" onClick={() => navigate("/signup")}>
+              Sign Up
+            </button>
+          )}
       </div>
     </div>
     </Card>
