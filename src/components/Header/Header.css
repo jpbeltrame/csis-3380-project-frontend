@@ -1,5 +1,6 @@
 .header{
     background-color:#27024B;
+    padding-bottom: 1rem;
 }
 
 .search{
@@ -20,3 +21,5 @@
     width: 90%;
     color:#F3ECEC;
 }
+
+

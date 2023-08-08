@@ -38,7 +38,7 @@ async function createUser(name, username, password) {
         }
   } 
   catch(error) {
-    console.log(error);
+    console.log('error');
     return false; // Registration failed
     // var input = document.getElementById("username");
     // var message = document.createElement("div");
@@ -71,6 +71,9 @@ function SignUp() {
           form.resetFields();
           // Set the registrationSuccess state to true to show the success card
           setRegistrationSuccess(true);
+        }
+        else{
+          message.error('Username unavailable');
         }
         // navigate("/user", { state: { userId: userId.props.to.state } });
         // navigate("/"); // Navigate to "/" route directly after successful signup

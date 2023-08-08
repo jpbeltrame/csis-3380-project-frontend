@@ -1,42 +1,40 @@
 /* UserProfile.css */
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .userFormDisabled form{
-    margin-top: 1rem;
-    /* padding: 0; */
-     margin-left: 35rem;
-    /* margin-bottom: 5rem; */ 
-    /* max-width: 00px; */
-  }
-
-  .title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    margin-left: 50rem;
-  }
-  
-  .cardContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-
-  .userForm form {
-    margin-top: 5rem;
-    margin-left: 35rem;
-    margin-bottom: 5rem;
-    /* max-width: 00px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.ant-row{
+.userFormDisabled form {
+  margin-top: 1rem;
+  margin-left: 35rem;
+}
+
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-left: 45rem;
+}
+
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+
+.userForm form {
+  margin-top: 5rem;
+  margin-left: 35rem;
+  margin-bottom: 5rem;
+  /* max-width: 00px; */
+}
+
+.ant-row {
   width: 100%;
 }
 
@@ -45,23 +43,170 @@
   color: aqua;
 }
 
-.ant-input{
+.ant-input {
   max-width: 300px;
 }
 
-.button div{
-  width:fit-content;
+.button div {
+  width: fit-content;
   margin-left: 3.7rem;
 }
 
-.switch{
+.switch {
   margin-left: 45rem;
   margin-bottom: 0;
   margin-top: 5rem;
 }
 
 
-.switch button{
+.switch button {
   margin-left: 1rem;
 }
+
+#user {
+  width: 45% !important;
+}
+
+#pName,
+#pUsername {
+  padding: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+#name,
+#Profusername {
+  width: 80%;
+  padding: 0.5rem;
+  border: 1px solid #001c3a;
+  border-radius: 5px;
+  margin-left: 1rem;
+}
+
+#name {
+  margin-left: 2.5rem;
+}
+
+#name:hover,
+#name:focus {
+  width: 80%;
+  padding: 0.5rem;
+  border: 2px solid #001c3a;
+  border-radius: 5px;
+  border-color: #6fbfe4;
+  outline: none;
+  margin-left: 1rem;
+  box-shadow: 0 0 1px #007bff;
+  margin-left: 2.5rem;
+}
+
+#Profusername {
+  width: 50%;
+}
+
+#Profusername:hover,
+#Profusername:focus {
+  padding: 0.5rem;
+  border: 2px solid #001c3a;
+  border-radius: 5px;
+  border-color: #6fbfe4;
+  outline: none;
+  margin-left: 1rem;
+  box-shadow: 0 0 1px #007bff;
+}
+
+#btnSave {
+  display: flex;
+  justify-content: center;
+}
+
+
+#btnSave button {
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover style */
+#btnSave button:hover {
+  background-color: #0056b3;
+}
+
+/* Active/focus style */
+#btnSave button:focus,
+#btnSave button:active {
+  background-color: #004499;
+  outline: none; /* Remove the default focus outline */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle box shadow when focused/active */
+}
+
+
+#editName ,
+#editUsername 
+{
+  padding: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: large;
+}
+
+#formName{
+  width: 80%;
+  padding: 0.5rem;
+  border:none;
+  margin-left: 1rem;
+  font-size: large;
+  margin-left: 2.5rem;
+}
+
+#formUsername{
+  width: 80%;
+  padding: 0.5rem;
+  border: none;
+  font-size: large;
+}
+
+#btnEdit{
+  display: flex;
+  justify-content: center;
+}
+
+#btnEdit button {
+  display: inline-block;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover style */
+#btnEdit button:hover {
+  background-color: #0056b3;
+}
+
+/* Active/focus style */
+#btnEdit button:focus,
+#btnEdit button:active {
+  background-color: #004499;
+  outline: none; /* Remove the default focus outline */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add a subtle box shadow when focused/active */
+}
+
+
+
+
 
