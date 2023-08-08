@@ -128,11 +128,10 @@ function Home() {
         </div>
      <Element className={`video ${isVideoInView ? "in-view" : ""}`} name="video">
         <div className="videoWrapper"> 
-          <iframe
-            width="420"
-            height="315"
-            src="https://www.youtube.com/embed/tgbNymZ7vqY"
-          ></iframe>
+        <iframe width="660" height="405" src="https://www.youtube.com/embed/HgqkapQIb6Y" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen></iframe>
         </div>
       </Element>
       <div className="end">
