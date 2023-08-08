@@ -2,16 +2,24 @@ import './Reviews.css';
 import React, { useState } from 'react';
 import { Button, Input } from 'antd';
 import Review from '../Review/Review';  
+import { useUserContext } from '../../UserContext';
 
 const Reviews = ({bookId, rating}) => {
 
   const [bookReviews, setBookReview] = useState([]);
   const [review, setReview] = useState("");
+  const { userId, username } = useUserContext();
 
   function addReview(text) {
     
+
     function getRandomInt(max) {
       return Math.floor(Math.random() * max);
+    }
+
+    let final_name = username;
+    if (!username) {
+      final_name = "anonymous"
     }
 
     const d = new Date();
@@ -21,7 +29,7 @@ const Reviews = ({bookId, rating}) => {
 
     const review = {
       id: getRandomInt(100000),
-      userName: "Joao Pedro Beltrame",
+      userName: final_name,
       text,
       date: [day , month, year].join('/')
     }
