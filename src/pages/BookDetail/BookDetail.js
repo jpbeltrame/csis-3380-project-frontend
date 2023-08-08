@@ -70,7 +70,7 @@ const BookDetail = () => {
       })
       .catch((error) => {
         console.error('Error adding book to wishlist:', error);
-        message.error('Failed to add to wishlist. Please try again.');
+        message.error('Failed to add to wishlist. Please Log In with your user and try again.');
       });
   };
 
